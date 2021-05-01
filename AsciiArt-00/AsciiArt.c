@@ -57,7 +57,7 @@ int main(int argc,char *argv[]) {
 					x=1;
 					if(y<rows-2) y++;
 				} else if(ch==KEY_BACKSPACE) {
-					if(x>1) x--;
+					if(x>1) x=cols-2;
 					else if(y>1) y--;
 					mvaddch(y,x,' ');
 				} else {
