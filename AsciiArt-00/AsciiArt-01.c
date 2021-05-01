@@ -53,22 +53,13 @@ int main(int argc,char *argv[]) {
 
 		switch(mode) {
 			case 0:
-				if(ch=='\n') {
-					x=1;
-					if(y<rows-2) y++;
-				} else if(ch==KEY_BACKSPACE) {
-					if(x>1) x--;
-					else if(y>1) y--;
-					mvaddch(y,x,' ');
-				} else {
-					if(ch>=32 && ch<=255) {
-						mvaddch(y,x,ch);
-						if(x<cols-1) {
-							x++;
-						} else {
-							x=1;
-							if(y<rows-2) y++;
-						}
+				if(ch>=0 && ch<=255) {
+					mvaddch(y,x,ch);
+					if(x<cols-1) {
+						x++;
+					} else {
+						x=0;
+						if(y<rows-1) y++;
 					}
 				}
 			break;
@@ -107,7 +98,6 @@ int main(int argc,char *argv[]) {
 			case 3:
 				pattern=ch;
 			break;
-			default: break;
 		}
 
 	} while(ch!=KEY_ESC);
